@@ -20,8 +20,8 @@ app.use(express.json())
 
 app.use(middleware.requestLogger)
 
-app.use('/api/', usersRouter)
-app.use('/api/', toolsRouter)
+app.use('/api/users', usersRouter)
+app.use('/api/tools', toolsRouter)
 
 app.use(middleware.unknownEndpointHandler)
 
