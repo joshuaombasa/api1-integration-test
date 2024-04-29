@@ -14,12 +14,13 @@ const unknownEndpointHandler = (request, response, next) => {
 
 const errorHandler = (error, request, response, next) => {
   logger.error(error.name)
+
   if (error.name === 'CastError') {
-    return response.status(404).json({ error: 'unknown endpoint' })
+    return response.status(400).json({ error: 'malformatted id' })
   }
 
   if (error.name === 'ValidationError') {
-    return response.status(404).json({ error: 'unknown endpoint' })
+    return response.status(400).json({ error: 'unknown endpoint' })
   }
 
   next(error)
